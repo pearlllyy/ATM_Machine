@@ -165,6 +165,8 @@ def register():
 def log_in():
     clear()
     header()
+    with open("pin.txt", "a") as file:
+        file.write("")
     print("LOG IN\n".center(60, " "))
     if not read_pin():
         print("NO USER FOUND. ".center(60, " "))
