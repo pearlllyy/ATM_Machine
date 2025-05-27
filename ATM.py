@@ -12,10 +12,10 @@ def write_pin(pin):
         file.write(pin)
 def read_balance():
     with open("balance.txt", "r")    as file:
-        return float(file.read().strip())
+        return int(file.read().strip())
 def write_balance(balance):
     with open("balance.txt", "w") as file:
-        file.write(f"{balance:.2f}")
+        file.write(balance)
 def valid_amount(amount):
     if amount % 100 == 0:
         return True
@@ -54,7 +54,7 @@ def pause():
     if os.name == 'nt':
         os.system('pause')
     else:
-        input("Press to continue...")
+        input("Press to enter continue...")
 
 # Registration and Login
 def card_registration():
@@ -155,7 +155,7 @@ def register():
 
         else:
             write_pin(new_pin)
-            write_balance(10000.00)
+            write_balance(str(10000))
             print()
             print("PIN Saved!\n".center(60, " "))
             footer()
@@ -207,34 +207,36 @@ def withdraw():
             header()
             print("WITHDRAW\n".center(60, " "))
             print(f"Your current balance is ₱{balance:.2f}\n".center(60, " "))
-            amount = float(input("                   Enter amount | ₱"))
+            amount = int(input("                   Enter amount | ₱"))
             if amount <= 0:
                 print("\nInvalid Amount. Please enter a positive value.".center(60, " "))
                 footer()
                 pause()
-                continue
+                break
             if not valid_amount(amount):
                 print()
                 print("Invalid amount. The machine only accepts multiples of 100.".center(60, " "))
                 footer()
                 pause()
-                continue
+                break
             if not isSameBank:
                 total_amount = amount + 18.00
             else:
                 total_amount = amount
             if total_amount > balance:
-                print("\nInsufficient funds.".center(60, " "))
+                print()
+                print("Insufficient funds.".center(60, " "))
+
                 if not isSameBank:
                     print("(Including ₱18.00 transaction fee)".center(60, " "))
                 footer()
                 pause()
-                continue
+                break
             if not isSameBank:
                 print()
                 print("₱18.00 transaction fee will be deducted.".center(60, " "))
             balance -= total_amount
-            write_balance(balance)
+            write_balance(str(int(balance)))
             print()
             print(f"You withdrew ₱{amount:.2f} from your account.".center(60, " "))
             if not isSameBank:
@@ -245,9 +247,11 @@ def withdraw():
             pause()
             return
         except ValueError:
-            print("\nPlease enter a valid number.".center(60, " "))
+            print()
+            print("Please enter a valid number.".center(60, " "))
             footer()
             pause()
+            break
 def deposit():
     try:
         clear()
@@ -264,7 +268,7 @@ def deposit():
             return
         else:
             balance += amount
-            write_balance(balance)
+            write_balance(str(int(balance)))
             print(f"You deposited ₱{amount:.2f} to your account.".center(60, " "))
             print(f"Your updated balance is ₱{balance:.2f}\n".center(60, " "))
             footer()
@@ -281,7 +285,7 @@ def check_balance():
     balance = read_balance()
     if not isSameBank:
         balance -= 2.00
-        write_balance(balance)
+        write_balance(str(int(balance)))
     header()
     print("\n\n")
     print(f" Your Balance is ₱ {balance} \n".center(60, " "))
@@ -393,9 +397,10 @@ def menu():
             print("Thank you for using the ATM.".center(60, " "))
             print("\n\n")
             footer()
-            input("Press enter to continue...")
+            pause()
             exit()
         else:
             print("Invalid choice.")
+            pause()
 
 atm()
