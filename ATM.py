@@ -214,7 +214,8 @@ def withdraw():
                 pause()
                 continue
             if not valid_amount(amount):
-                print("\nInvalid amount. The machine only accepts multiples of 100.".center(60, " "))
+                print()
+                print("Invalid amount. The machine only accepts multiples of 100.".center(60, " "))
                 footer()
                 pause()
                 continue
@@ -237,8 +238,8 @@ def withdraw():
             print()
             print(f"You withdrew ₱{amount:.2f} from your account.".center(60, " "))
             if not isSameBank:
-                print()
                 print(f"Transaction fee: ₱18.00".center(60, " "))
+            print()
             print(f"Your current balance is ₱{balance:.2f}".center(60, " "))
             footer()
             pause()
