@@ -1,7 +1,6 @@
-
 # ATM Machine Simulator
 
-This project is for our CC203: Computer Programming 2 course, this simulates an Automated Teller Machine (ATM) system that allows users to perform common banking operations through a command-line interface.
+This project is for our final output in CC203: Computer Programming 2 course, this simulates an Automated Teller Machine (ATM) system that allows users to perform common banking operations through a command-line interface.
 
 
 ## Guidelines
@@ -31,7 +30,8 @@ This project is for our CC203: Computer Programming 2 course, this simulates an 
   - Exit
 ## Overview
 
-The ATM Simulator is a Python application that replicates the functionality of a real ATM. It provides a text-based interface for users to perform banking operations such as checking balance, withdrawing money, depositing money, and changing their PIN.
+The ATM Simulator is a Python application that replicates the functionality of an ATM. It provides a text-based interface for users to perform banking operations such as checking balance, withdrawing money, depositing money, and changing their PIN.
+
 ## Features
 
 - **Card Registration**: Users can select their bank (BDO or other banks)  
@@ -101,4 +101,4 @@ This project is for educational purposes only.
 
 ## Author
 
-This ATM simulator was created as a demonstration of programming concepts including file Input/Output, user authentication, and transaction processing in Python.
+This ATM simulator was created as a demonstration of programming concepts including file handling, input/output, functions, conditional statements, loops, and error handling.
